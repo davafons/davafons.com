@@ -1,10 +1,18 @@
 module.exports = {
   siteMetadata: {
-    title: 'My Site'
+    title: 'David Afonso',
+    author: 'David Afonso',
+    description: '...',
+    siteUrl: 'https://davafons.com',
+    social: {
+      twitter: 'davafons',
+      github: 'davafons'
+    }
   },
   plugins: [
     'gatsby-plugin-theme-ui',
     'gatsby-transformer-remark',
+    'gatsby-plugin-feed',
     {
       resolve: 'gatsby-plugin-typography',
       options: {
@@ -16,14 +24,14 @@ module.exports = {
       options: {
         name: 'blog',
         path: `${__dirname}/content/blog`
-      },
+      }
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'assets',
         path: `${__dirname}/content/assets`
-      },
+      }
     }
   ]
 };
