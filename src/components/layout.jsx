@@ -2,6 +2,7 @@
 import { jsx } from 'theme-ui';
 
 import { useStaticQuery, Link, graphql } from 'gatsby';
+import { useColorMode } from 'theme-ui';
 
 import { rhythm } from '../utils/typography';
 
@@ -12,6 +13,8 @@ const ListLink = props => (
 );
 
 export default ({ children }) => {
+  const [colorMode, setColorMode] = useColorMode();
+
   const data = useStaticQuery(
     graphql`
       query {
@@ -23,6 +26,7 @@ export default ({ children }) => {
       }
     `
   );
+
   return (
     <div sx={{ margin: '0 auto', maxWidth: rhythm(28), padding: rhythm(1) }}>
       <header style={{ margin: '1rem 0' }}>
@@ -35,6 +39,12 @@ export default ({ children }) => {
         <ul style={{ listStyle: 'none', float: 'right' }}>
           <ListLink to="/about/">About</ListLink>
           <ListLink to="/contact/">Contact</ListLink>
+          <button
+            onClick={() => {
+              setColorMode(colorMode === 'light' ? 'dark' : 'light')
+            }}>
+            Toggle { colorMode === 'light' ? 'Dark' : 'Light' }
+          </button>
         </ul>
       </header>
 
