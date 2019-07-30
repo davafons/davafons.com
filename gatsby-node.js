@@ -5,7 +5,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions;
 
   if (node.internal.type === 'MarkdownRemark') {
-    const slug = createFilePath({ node, getNode });
+    const slug = node.frontmatter.slug || createFilePath({ node, getNode });
     createNodeField({
       node,
       name: 'slug',
@@ -29,7 +29,13 @@ exports.createPages = ({ graphql, actions }) => {
       }
     }
   `).then(result => {
-    result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+    if (result.errors) {
+      throw result.errors;
+    }
+
+    const posts = result.data.allMarkdownRemark.edges;
+
+    posts.forEach(({ node }) => {
       createPage({
         path: node.fields.slug,
         component: path.resolve('./src/templates/blog-post.js'),

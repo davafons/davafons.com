@@ -6,6 +6,8 @@ import { rhythm } from '../utils/typography';
 import Layout from '../components/layout';
 
 export default ({ data }) => {
+  const posts = data.allMarkdownRemark.edges;
+
   return (
     <Layout>
       <h1
@@ -15,34 +17,35 @@ export default ({ data }) => {
       >
         Hi! Im building a fake Gatsby site as part of a tutorial!
       </h1>
-      <h4>{data.allMarkdownRemark.totalCount} Posts</h4>
-      {data.allMarkdownRemark.edges.map(({ node }) => (
-        <div key={node.id}>
-          <Link
-            to={node.fields.slug}
-            sx={{
-              textDecoration: 'none',
-              color: 'inherit'
-            }}
-          >
-            <h3
+      {posts.map(({ node }) => {
+        return (
+          <div key={node.id}>
+            <Link
+              to={node.fields.slug}
               sx={{
-                marginBottom: rhythm(1 / 4)
+                textDecoration: 'none',
+                color: 'inherit'
               }}
             >
-              {node.frontmatter.title}{' '}
-              <span
+              <h3
                 sx={{
-                  color: 'secondary'
+                  marginBottom: rhythm(1 / 4)
                 }}
               >
-                - {node.frontmatter.date}
-              </span>
-            </h3>
-            <p>{node.excerpt}</p>
-          </Link>
-        </div>
-      ))}
+                {node.frontmatter.title}{' '}
+                <span
+                  sx={{
+                    color: 'secondary'
+                  }}
+                >
+                  - {node.frontmatter.date}
+                </span>
+              </h3>
+              <p>{node.excerpt}</p>
+            </Link>
+          </div>
+        );
+      })}
     </Layout>
   );
 };
@@ -50,7 +53,6 @@ export default ({ data }) => {
 export const query = graphql`
   query {
     allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
-      totalCount
       edges {
         node {
           id
