@@ -10,11 +10,7 @@ export default ({ data }) => {
 
   return (
     <Layout>
-      <h1
-        sx={{
-          color: 'primary'
-        }}
-      >
+      <h1>
         Hi! Im building a fake Gatsby site as part of a tutorial!
       </h1>
       {posts.map(({ node }) => {

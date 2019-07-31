@@ -1,22 +1,58 @@
+import { rhythm } from '../utils/typography.js';
+
 export default {
   initialColorMode: 'light',
   colors: {
-    text: '#000',
-    background: '#fff',
-    primary: '#639',
-    secondary: '#ff6347',
+    text: '#404040',
+    background: '#fafaf9',
+    background2: '#ffffff',
+    title: '#3d2c29',
+    primary: '#7198f4',
+    secondary: '#4176f1',
+    accent: '#e63c1a',
+    muted: '#ebeffa',
     modes: {
       dark: {
-        text: '#fff',
-        background: '#000',
-        primary: '#639',
-        secondary: '#ff6347'
+        text: '#b3b9c5',
+        background: '#2d2d2d',
+        background2: '#202020',
+        title: '#cecece',
+        primary: '#7198f4',
+        secondary: '#4176f1',
+        accent: '#e63c1a',
+        muted: '#ebeffa'
       }
     }
   },
   styles: {
-    blockquote: {
-      color: 'secondary'
-    }
+    h1: {
+      color: 'title'
+    },
+    h2: {
+      color: 'title'
+    },
+    h3: {
+      color: 'title'
+    },
+    h4: {
+      color: 'title'
+    },
+    h5: {
+      color: 'title'
+    },
+    a: {
+      color: 'primary',
+      textDecoration: 'none',
+      backgroundImage: 'none',
+      textShadow: 'none',
+      '&:hover': {
+        color: 'secondary',
+        backgroundColor: 'muted'
+      }
+    },
+    Container: {
+      maxWidth: rhythm(29),
+      padding: 0
+    },
   }
 };

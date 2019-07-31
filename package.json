@@ -30,6 +30,7 @@
     "prismjs": "^1.17.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-icons": "^3.7.0",
     "react-typography": "^0.16.19",
     "theme-ui": "^0.2.23",
     "typography": "^0.16.19",
