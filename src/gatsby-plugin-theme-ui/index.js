@@ -24,6 +24,9 @@ export default {
       }
     }
   },
+  sizes: {
+    contentWidth: rhythm(28)
+  },
   styles: {
     h1: {
       color: 'title'
@@ -49,10 +52,6 @@ export default {
         color: 'secondary',
         backgroundColor: 'muted'
       }
-    },
-    Container: {
-      maxWidth: rhythm(29),
-      padding: 0
-    },
+    }
   }
 };
