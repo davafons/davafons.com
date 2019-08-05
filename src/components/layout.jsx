@@ -13,7 +13,7 @@ export default ({ children }) => {
         sx={{
           maxWidth: 'contentWidth',
           margin: '0 auto',
-          padding: `0 ${rhythm(1)}`
+          padding: `0 ${rhythm(0.75)}`
         }}
       >
         {children}

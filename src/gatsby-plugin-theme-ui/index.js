@@ -81,7 +81,7 @@ const theme = {
       boxShadow: '2px 4px 25px rgba(0,0,0,.15) !important'
     },
     code: {
-      padding: `${rhythm(0.2)} ${rhythm(0.15)} ${rhythm(0)} ${rhythm(0.15)} !important`,
+      padding: `${rhythm(0.2)} ${rhythm(0.15)} ${rhythm(0.1)} ${rhythm(0.15)} !important`,
       color: '#eee !important'
     },
     hr: {

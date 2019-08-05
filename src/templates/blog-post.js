@@ -27,8 +27,7 @@ const Pre = props => {
     <Styled.pre
       {...props}
       sx={{
-        backgroundColor: theme => `${theme.colors.codeBackground}
-      !important`
+        backgroundColor: theme => `${theme.colors.codeBackground} !important`
       }}
     >
       {props.children}
