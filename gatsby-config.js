@@ -61,10 +61,10 @@ module.exports = {
         name: 'David Afonso',
         short_name: 'davafons',
         start_url: '/',
-        background_color: '#ffffff',
+        background_color: '#0000',
         theme_color: '#663399',
         display: 'minimal-ui',
-        icon: 'content/assets/gatsby-icon.png'
+        icon: 'content/assets/icon.png'
       }
     },
     'gatsby-plugin-offline'
