@@ -15,7 +15,7 @@ const theme = {
     codeBackground: '#2d2d2d',
     modes: {
       dark: {
-        text: '#b3b9c5',
+        text: '#c5cad3',
         background: '#2d2d2d',
         background2: '#202020',
         title: '#cecece',
