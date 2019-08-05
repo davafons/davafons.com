@@ -11,20 +11,11 @@ export default ({ data }) => {
 
   return (
     <Layout>
-      <Styled.h1 sx={{ marginTop: rhythm(1) }}>
-        Hi! Im building a fake Gatsby site as part of a tutorial!
-      </Styled.h1>
+      <Styled.h1>Hi! Im building a fake Gatsby site as part of a tutorial!</Styled.h1>
       {posts.map(({ node }) => {
         return (
           <div key={node.id}>
-            <Styled.a
-              as={Link}
-              to={node.fields.slug}
-              sx={{
-                textDecoration: 'none',
-                color: 'inherit'
-              }}
-            >
+            <Styled.a as={Link} to={node.fields.slug}>
               <Styled.h3
                 sx={{
                   marginBottom: rhythm(1 / 4)
@@ -34,8 +25,8 @@ export default ({ data }) => {
                 <span
                   sx={{
                     fontSize: rhythm(0.6),
-                    float: "right",
-                    color: 'secondary'
+                    float: 'right',
+                    color: 'primary'
                   }}
                 >
                   {node.frontmatter.date}

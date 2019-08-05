@@ -13,6 +13,7 @@
   "dependencies": {
     "@emotion/core": "^10.0.14",
     "@mdx-js/react": "^1.1.1",
+    "@theme-ui/prism": "^0.2.29",
     "gatsby": "^2.13.42",
     "gatsby-plugin-feed": "^2.3.6",
     "gatsby-plugin-manifest": "^2.2.4",
@@ -32,6 +33,7 @@
     "react-dom": "^16.8.6",
     "react-icons": "^3.7.0",
     "react-typography": "^0.16.19",
+    "rehype-react": "^4.0.1",
     "theme-ui": "^0.2.23",
     "typography": "^0.16.19",
     "typography-theme-fairy-gates": "^0.16.19"

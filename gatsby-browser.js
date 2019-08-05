@@ -1,1 +1,3 @@
-require("prismjs/themes/prism-solarizedlight.css")
+import { useColorMode } from 'theme-ui';
+
+require("prismjs/themes/prism-okaidia.css")

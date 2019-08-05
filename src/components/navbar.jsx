@@ -44,7 +44,7 @@ const ListItem = props => {
       sx={{
         float: props.float,
         display: 'inline-block',
-        padding: `0 ${rhythm(0.6)}`,
+        padding: `0 ${rhythm(0.5)}`,
         margin: 0,
         fontSize: props.fontSize
       }}
@@ -58,7 +58,8 @@ const ListItem = props => {
 const Navbar = props => {
   const [colorMode, setColorMode] = useColorMode();
 
-  const boxShadow = colorMode === 'dark' ? '0 2px 8px -2px rgba(0,0,0,.2)' : '';
+  const boxShadow = colorMode === 'dark' ? '0 3px 8px -3px rgba(0,0,0,.2)' : '';
+  const githubIconColor = colorMode === "dark" ? "white" : "black";
 
   const data = useStaticQuery(
     graphql`
@@ -105,27 +106,33 @@ const Navbar = props => {
         </ListItem>
 
         <ListItem fontSize={rhythm(0.8)} float="right">
-          <InnerLink>
-            <div
-              sx={{marginTop: "2px"}}
-              onClick={() => {
-                setColorMode(colorMode === 'light' ? 'dark' : 'light');
-              }}
-            >
-              {colorMode === 'light' ? <IoMdSunny /> : <IoMdMoon />}
-            </div>
-          </InnerLink>
+          <button
+            sx={{
+              cursor: "pointer",
+              color: "#f9bc06",
+              backgroundColor: "inherit",
+              border: 'none',
+              marginTop: '3px',
+              marginLeft: rhythm(0.5),
+              padding: 0
+            }}
+            onClick={() => {
+              setColorMode(colorMode === 'light' ? 'dark' : 'light');
+            }}
+          >
+            {colorMode === 'light' ? <IoMdSunny /> : <IoMdMoon />}
+          </button>
         </ListItem>
 
         <ListItem fontSize={rhythm(0.8)} float="right">
           <OuterLink to={githubURL}>
-            <IoLogoGithub sx={{marginTop: "2px"}}/>
+            <IoLogoGithub sx={{ color: {githubIconColor}, marginTop: '3px' }} />
           </OuterLink>
         </ListItem>
 
         <ListItem fontSize={rhythm(0.8)} float="right">
           <OuterLink to={twitterURL}>
-            <IoLogoTwitter sx={{marginTop: "2px"}}/>
+            <IoLogoTwitter sx={{ color: "#00acee", marginTop: '3px' }} />
           </OuterLink>
         </ListItem>
 
