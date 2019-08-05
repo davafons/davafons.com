@@ -5,9 +5,8 @@ const theme = {
   colors: {
     text: '#404040',
     background: '#fafaf9',
-    background2: '#fafaf9',
-    title: '#3d2c29',
-    primary: '#4176f1',
+    background2: '#f3f3f2',
+    primary: '#008aff',
     secondary: '#1d50c9',
     accent: '#e63c1a',
     muted: '#ebeffa',
@@ -18,8 +17,7 @@ const theme = {
         text: '#c5cad3',
         background: '#2d2d2d',
         background2: '#202020',
-        title: '#cecece',
-        primary: '#4176f1',
+        primary: '#008aff',
         secondary: '#1d50c9',
         accent: '#e63c1a',
         muted: '#ebeffa',
@@ -29,32 +27,37 @@ const theme = {
     }
   },
   sizes: {
-    contentWidth: rhythm(28)
+    contentWidth: rhythm(29)
   },
   styles: {
     h1: {
-      color: 'title',
+      color: 'text',
       textShadow: 'none'
     },
     h2: {
-      color: 'title',
+      color: 'text',
       textShadow: 'none'
     },
     h3: {
-      color: 'title',
+      color: 'text',
       textShadow: 'none'
     },
     h4: {
-      color: 'title',
+      color: 'text',
       textShadow: 'none'
     },
     h5: {
-      color: 'title',
+      color: 'text',
+      textShadow: 'none'
+    },
+    h6: {
+      color: 'text',
       textShadow: 'none'
     },
     p: {
       color: 'text',
-      textShadow: 'none'
+      textShadow: 'none',
+      verticalAlign: 'middle !important'
     },
     a: {
       color: 'primary',
@@ -62,21 +65,24 @@ const theme = {
       backgroundImage: 'none',
       textShadow: 'none',
       '&:hover': {
-        color: 'secondary'
+        color: 'secondary',
+        textDecoration: 'underline'
       }
     },
     blockquote: {
       borderLeft: 'none',
       borderColor: 'primary',
       borderLeftStyle: 'solid',
-      borderLeftWidth: rhythm(0.4)
+      borderLeftWidth: rhythm(0.4),
+      marginLeft: 0
     },
     pre: {
       margin: `${rhythm(1)} 0 !important`,
       boxShadow: '2px 4px 25px rgba(0,0,0,.15) !important'
     },
     code: {
-      padding: `${rhythm(0.1)} ${rhythm(0.2)} !important`
+      padding: `${rhythm(0.2)} ${rhythm(0.15)} ${rhythm(0)} ${rhythm(0.15)} !important`,
+      color: '#eee !important'
     },
     hr: {
       marginTop: rhythm(0.5),

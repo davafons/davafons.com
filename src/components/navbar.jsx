@@ -55,11 +55,12 @@ const ListItem = props => {
   );
 };
 
-const Navbar = props => {
+const Navbar = () => {
   const [colorMode, setColorMode] = useColorMode();
 
-  const boxShadow = colorMode === 'dark' ? '0 3px 8px -3px rgba(0,0,0,.2)' : '';
-  const githubIconColor = colorMode === "dark" ? "white" : "black";
+  // const boxShadow = colorMode === 'dark' ? '0 3px 8px -3px rgba(0,0,0,.2)' : '';
+  const boxShadow = '0 1px 3px -2px rgba(0,0,0,.2)';
+  const githubIconColor = colorMode === 'light' ? '#000' : '#fff';
 
   const data = useStaticQuery(
     graphql`
@@ -83,10 +84,10 @@ const Navbar = props => {
   return (
     <nav
       sx={{
-        padding: `${rhythm(0.6)} 0`,
+        paddingTop: rhythm(0.5),
+        paddingBottom: rhythm(0.25),
         margin: '0 auto',
         backgroundColor: 'background2',
-        lineHeight: rhythm(1),
         boxShadow: boxShadow
       }}
     >
@@ -108,11 +109,10 @@ const Navbar = props => {
         <ListItem fontSize={rhythm(0.8)} float="right">
           <button
             sx={{
-              cursor: "pointer",
-              color: "#f9bc06",
-              backgroundColor: "inherit",
+              cursor: 'pointer',
+              color: '#f9bc06',
+              backgroundColor: 'inherit',
               border: 'none',
-              marginTop: '3px',
               marginLeft: rhythm(0.5),
               padding: 0
             }}
@@ -126,13 +126,15 @@ const Navbar = props => {
 
         <ListItem fontSize={rhythm(0.8)} float="right">
           <OuterLink to={githubURL}>
-            <IoLogoGithub sx={{ color: {githubIconColor}, marginTop: '3px' }} />
+            <span sx={{ color: () => (colorMode === 'light' ? '#000' : '#fff') }}>
+              <IoLogoGithub />
+            </span>
           </OuterLink>
         </ListItem>
 
         <ListItem fontSize={rhythm(0.8)} float="right">
           <OuterLink to={twitterURL}>
-            <IoLogoTwitter sx={{ color: "#00acee", marginTop: '3px' }} />
+            <IoLogoTwitter sx={{ color: '#00acee' }} />
           </OuterLink>
         </ListItem>
 

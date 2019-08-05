@@ -15,7 +15,7 @@ export default ({ data }) => {
       {posts.map(({ node }) => {
         return (
           <div key={node.id}>
-            <Styled.a as={Link} to={node.fields.slug}>
+            <Link sx={{}} to={node.fields.slug}>
               <Styled.h3
                 sx={{
                   marginBottom: rhythm(1 / 4)
@@ -33,7 +33,7 @@ export default ({ data }) => {
                 </span>
               </Styled.h3>
               <Styled.p>{node.excerpt}</Styled.p>
-            </Styled.a>
+            </Link>
           </div>
         );
       })}
