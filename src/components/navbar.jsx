@@ -5,6 +5,8 @@ import { rhythm } from '../utils/typography';
 
 import { IoMdSunny, IoMdMoon, IoLogoGithub, IoLogoTwitter } from 'react-icons/io';
 
+import icon from '../../content/assets/icon.png';
+
 import { Link } from 'gatsby';
 
 import { useColorMode } from 'theme-ui';
@@ -85,7 +87,7 @@ const Navbar = () => {
     <nav
       sx={{
         paddingTop: rhythm(0.5),
-        paddingBottom: rhythm(0.25),
+        paddingBottom: rhythm(0.2),
         margin: '0 auto',
         backgroundColor: 'background2',
         boxShadow: boxShadow
@@ -95,14 +97,21 @@ const Navbar = () => {
         sx={{
           maxWidth: 'contentWidth',
           listStyle: 'none',
-          padding: 0,
+          padding: `0 ${rhythm(0.2)}`,
           margin: '0 auto',
           overflow: 'hidden'
         }}
       >
         <ListItem fontSize={rhythm(0.75)} float="left" to="/">
           <InnerLink to="/">
-            <b>{data.site.siteMetadata.title}</b>
+            <span>
+              <img
+                src={icon}
+                sx={{ display: 'inline-block', height: rhythm(0.95) }}
+                alt="Icon"
+              />
+            </span>
+            <b sx={{paddingLeft: rhythm(0.2), position: "relative", top: "-5px"}}>{data.site.siteMetadata.title}</b>
           </InnerLink>
         </ListItem>
 
