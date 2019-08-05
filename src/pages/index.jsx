@@ -4,26 +4,28 @@ import { jsx } from 'theme-ui';
 import { Link, graphql } from 'gatsby';
 import { rhythm } from '../utils/typography';
 import Layout from '../components/layout';
+import { Styled } from 'theme-ui';
 
 export default ({ data }) => {
   const posts = data.allMarkdownRemark.edges;
 
   return (
     <Layout>
-      <h1>
+      <Styled.h1 sx={{ marginTop: rhythm(1) }}>
         Hi! Im building a fake Gatsby site as part of a tutorial!
-      </h1>
+      </Styled.h1>
       {posts.map(({ node }) => {
         return (
           <div key={node.id}>
-            <Link
+            <Styled.a
+              as={Link}
               to={node.fields.slug}
               sx={{
                 textDecoration: 'none',
                 color: 'inherit'
               }}
             >
-              <h3
+              <Styled.h3
                 sx={{
                   marginBottom: rhythm(1 / 4)
                 }}
@@ -31,14 +33,16 @@ export default ({ data }) => {
                 {node.frontmatter.title}{' '}
                 <span
                   sx={{
+                    fontSize: rhythm(0.6),
+                    float: "right",
                     color: 'secondary'
                   }}
                 >
-                  - {node.frontmatter.date}
+                  {node.frontmatter.date}
                 </span>
-              </h3>
-              <p>{node.excerpt}</p>
-            </Link>
+              </Styled.h3>
+              <Styled.p>{node.excerpt}</Styled.p>
+            </Styled.a>
           </div>
         );
       })}

@@ -5,7 +5,7 @@ export default {
   colors: {
     text: '#404040',
     background: '#fafaf9',
-    background2: '#ffffff',
+    background2: '#fafaf9',
     title: '#3d2c29',
     primary: '#7198f4',
     secondary: '#4176f1',
@@ -29,19 +29,28 @@ export default {
   },
   styles: {
     h1: {
-      color: 'title'
+      color: 'title',
+      textShadow: 'none'
     },
     h2: {
-      color: 'title'
+      color: 'title',
+      textShadow: 'none'
     },
     h3: {
-      color: 'title'
+      color: 'title',
+      textShadow: 'none'
     },
     h4: {
-      color: 'title'
+      color: 'title',
+      textShadow: 'none'
     },
     h5: {
-      color: 'title'
+      color: 'title',
+      textShadow: 'none'
+    },
+    p: {
+      color: 'text',
+      textShadow: 'none'
     },
     a: {
       color: 'primary',
