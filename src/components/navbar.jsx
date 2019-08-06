@@ -32,6 +32,7 @@ const OuterLink = props => (
     href={props.to}
     target="_blank"
     rel="noopener noreferrer"
+    aria-label={props.ariaLabel}
     sx={{
       color: 'inherit',
       backgroundImage: 'inherit'
@@ -61,10 +62,6 @@ const ListItem = props => {
 const Navbar = () => {
   const [colorMode, setColorMode] = useColorMode();
 
-  // const boxShadow = colorMode === 'dark' ? '0 3px 8px -3px rgba(0,0,0,.2)' : '';
-  const boxShadow = '0 1px 3px -2px rgba(0,0,0,.2)';
-  const githubIconColor = colorMode === 'light' ? '#000' : '#fff';
-
   const data = useStaticQuery(
     graphql`
       query {
@@ -91,7 +88,7 @@ const Navbar = () => {
         paddingBottom: rhythm(0.2),
         margin: '0 auto',
         backgroundColor: 'background2',
-        boxShadow: boxShadow
+        boxShadow: '0 1px 3px -2px rgba(0,0,0,.2)'
       }}
     >
       <ul
@@ -120,8 +117,9 @@ const Navbar = () => {
 
         <ListItem fontSize={rhythm(0.8)} float="right">
           <button
+            name="change_theme"
+            aria-label="Change page theme"
             sx={{
-              name: 'change_theme',
               cursor: 'pointer',
               color: '#f9bc06',
               backgroundColor: 'inherit',
@@ -138,21 +136,16 @@ const Navbar = () => {
         </ListItem>
 
         <ListItem fontSize={rhythm(0.8)} float="right">
-          <OuterLink to={githubURL}>
-            <span
-              sx={{
-                ariaLabel: 'Github',
-                color: () => (colorMode === 'light' ? '#000' : '#fff')
-              }}
-            >
+          <OuterLink ariaLabel="Github" to={githubURL}>
+            <span sx={{ color: () => (colorMode === 'light' ? '#000' : '#fff') }}>
               <IoLogoGithub />
             </span>
           </OuterLink>
         </ListItem>
 
         <ListItem fontSize={rhythm(0.8)} float="right">
-          <OuterLink to={twitterURL}>
-            <IoLogoTwitter sx={{ ariaLabel: 'Twitter', color: '#00acee' }} />
+          <OuterLink ariaLabel="Twitter" to={twitterURL}>
+            <IoLogoTwitter sx={{ color: '#00acee' }} />
           </OuterLink>
         </ListItem>
 
