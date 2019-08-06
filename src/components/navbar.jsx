@@ -8,7 +8,7 @@ import { IoMdSunny, IoMdMoon, IoLogoGithub, IoLogoTwitter } from 'react-icons/io
 import icon from '../../content/assets/icon.png';
 
 import { Link } from 'gatsby';
-import { OutboundLink } from "gatsby-plugin-google-analytics"
+import { OutboundLink } from 'gatsby-plugin-google-analytics';
 
 import { useColorMode } from 'theme-ui';
 import { useStaticQuery, graphql } from 'gatsby';
@@ -112,13 +112,16 @@ const Navbar = () => {
                 alt="Icon"
               />
             </span>
-            <b sx={{paddingLeft: rhythm(0.2), position: "relative", top: "-5px"}}>{data.site.siteMetadata.title}</b>
+            <b sx={{ paddingLeft: rhythm(0.2), position: 'relative', top: '-5px' }}>
+              {data.site.siteMetadata.title}
+            </b>
           </InnerLink>
         </ListItem>
 
         <ListItem fontSize={rhythm(0.8)} float="right">
           <button
             sx={{
+              name: 'change_theme',
               cursor: 'pointer',
               color: '#f9bc06',
               backgroundColor: 'inherit',
@@ -136,7 +139,12 @@ const Navbar = () => {
 
         <ListItem fontSize={rhythm(0.8)} float="right">
           <OuterLink to={githubURL}>
-            <span sx={{ color: () => (colorMode === 'light' ? '#000' : '#fff') }}>
+            <span
+              sx={{
+                ariaLabel: 'Github',
+                color: () => (colorMode === 'light' ? '#000' : '#fff')
+              }}
+            >
               <IoLogoGithub />
             </span>
           </OuterLink>
@@ -144,7 +152,7 @@ const Navbar = () => {
 
         <ListItem fontSize={rhythm(0.8)} float="right">
           <OuterLink to={twitterURL}>
-            <IoLogoTwitter sx={{ color: '#00acee' }} />
+            <IoLogoTwitter sx={{ ariaLabel: 'Twitter', color: '#00acee' }} />
           </OuterLink>
         </ListItem>
 
