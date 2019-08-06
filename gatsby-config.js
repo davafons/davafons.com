@@ -70,7 +70,7 @@ module.exports = {
         name: 'David Afonso',
         short_name: 'davafons',
         start_url: '/',
-        background_color: '#0000',
+        background_color: '#fafaf9',
         theme_color: '#663399',
         display: 'minimal-ui',
         icon: 'content/assets/icon.png'
