@@ -8,6 +8,7 @@ import { IoMdSunny, IoMdMoon, IoLogoGithub, IoLogoTwitter } from 'react-icons/io
 import icon from '../../content/assets/icon.png';
 
 import { Link } from 'gatsby';
+import { OutboundLink } from "gatsby-plugin-google-analytics"
 
 import { useColorMode } from 'theme-ui';
 import { useStaticQuery, graphql } from 'gatsby';
@@ -27,7 +28,7 @@ const InnerLink = props => (
 );
 
 const OuterLink = props => (
-  <a
+  <OutboundLink
     href={props.to}
     target="_blank"
     rel="noopener noreferrer"
@@ -37,7 +38,7 @@ const OuterLink = props => (
     }}
   >
     {props.children}
-  </a>
+  </OutboundLink>
 );
 
 const ListItem = props => {

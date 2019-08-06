@@ -5,6 +5,7 @@ import React from 'react';
 import Layout from '../components/layout';
 import { graphql } from 'gatsby';
 
+import { OutboundLink } from 'gatsby-plugin-google-analytics';
 import rehypeReact from 'rehype-react';
 
 import SEO from '../components/seo.jsx';
@@ -37,6 +38,14 @@ const Pre = props => {
   );
 };
 
+const StyledOutLink = props => {
+  return (
+    <Styled.a {...props} as={OutboundLink}>
+      {props.children}
+    </Styled.a>
+  );
+};
+
 export default ({ data }) => {
   const post = data.markdownRemark;
 
@@ -50,7 +59,7 @@ export default ({ data }) => {
       h4: Styled.h4,
       h5: Styled.h5,
       h6: Styled.h6,
-      a: Styled.a,
+      a: StyledOutLink,
       blockquote: Styled.blockquote,
       code: Code,
       pre: Pre,
