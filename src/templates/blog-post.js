@@ -7,6 +7,8 @@ import { graphql } from 'gatsby';
 
 import rehypeReact from 'rehype-react';
 
+import SEO from '../components/seo.jsx';
+
 import { Styled } from 'theme-ui';
 
 const Code = props => {
@@ -58,6 +60,10 @@ export default ({ data }) => {
 
   return (
     <Layout>
+      <SEO
+        title={post.frontmatter.title}
+        description={post.frontmatter.description || post.excerpt}
+      />
       <div>
         <Styled.h1>{post.frontmatter.title}</Styled.h1>
         {renderAst(post.htmlAst)}

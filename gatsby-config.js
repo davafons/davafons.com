@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: 'David Afonso',
     author: 'David Afonso',
-    description: '...',
+    description: 'Coder. Computer Graphics & Vim enthusiast',
     siteUrl: 'https://davafons.com',
     social: {
       twitter: 'davafons',
@@ -53,6 +53,7 @@ module.exports = {
         ]
       }
     },
+    'gatsby-plugin-react-helmet',
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     {

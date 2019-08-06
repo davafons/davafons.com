@@ -6,11 +6,14 @@ import { rhythm } from '../utils/typography';
 import Layout from '../components/layout';
 import { Styled } from 'theme-ui';
 
+import SEO from '../components/seo.jsx';
+
 export default ({ data }) => {
   const posts = data.allMarkdownRemark.edges;
 
   return (
     <Layout>
+      <SEO title="All posts" />
       <Styled.h1>Hi! Im building a fake Gatsby site as part of a tutorial!</Styled.h1>
       {posts.map(({ node }) => {
         return (
