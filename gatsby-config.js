@@ -6,7 +6,8 @@ module.exports = {
     siteUrl: 'https://davafons.com',
     social: {
       twitter: 'davafons',
-      github: 'davafons'
+      github: 'davafons',
+      linkedin: 'davafons'
     }
   },
   plugins: [

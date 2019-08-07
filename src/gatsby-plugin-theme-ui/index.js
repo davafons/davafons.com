@@ -8,9 +8,7 @@ const theme = {
     background2: '#f3f3f2',
     primary: '#008aff',
     secondary: '#1d50c9',
-    accent: '#e63c1a',
-    muted: '#ebeffa',
-    primaryHighlight: '#ebeffa',
+    muted: '#d4edf7',
     codeBackground: '#2d2d2d',
     modes: {
       dark: {
@@ -19,9 +17,7 @@ const theme = {
         background2: '#202020',
         primary: '#008aff',
         secondary: '#1d50c9',
-        accent: '#e63c1a',
-        muted: '#ebeffa',
-        primaryHighlight: '#222222',
+        muted: '#f2f2f2',
         codeBackground: '#202020'
       }
     }
@@ -66,12 +62,13 @@ const theme = {
       textShadow: 'none',
       '&:hover': {
         color: 'secondary',
+        backgroundColor: 'muted',
         textDecoration: 'underline'
       }
     },
     blockquote: {
       borderLeft: 'none',
-      borderColor: 'primary',
+      borderColor: 'text',
       borderLeftStyle: 'solid',
       borderLeftWidth: rhythm(0.4),
       marginLeft: 0

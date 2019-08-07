@@ -3,7 +3,13 @@ import { jsx } from 'theme-ui';
 
 import { rhythm } from '../utils/typography';
 
-import { IoMdSunny, IoMdMoon, IoLogoGithub, IoLogoTwitter } from 'react-icons/io';
+import {
+  IoMdSunny,
+  IoMdMoon,
+  IoLogoGithub,
+  IoLogoTwitter,
+  IoLogoLinkedin
+} from 'react-icons/io';
 
 import icon from '../../content/assets/icon.png';
 
@@ -80,6 +86,7 @@ const Navbar = () => {
 
   const githubURL = `https://github.com/${data.site.siteMetadata.social.github}`;
   const twitterURL = `https://twitter.com/${data.site.siteMetadata.social.twitter}`;
+  const linkedinURL = `https://linkedin.com/in/${data.site.siteMetadata.social.linkedin}`;
 
   return (
     <nav
@@ -133,6 +140,14 @@ const Navbar = () => {
           >
             {colorMode === 'light' ? <IoMdSunny /> : <IoMdMoon />}
           </button>
+        </ListItem>
+
+        <ListItem fontSize={rhythm(0.85)} float="right">
+          <OuterLink ariaLabel="Linkedin" to={linkedinURL}>
+            <span sx={{ color: () => (colorMode === 'light' ? '#000' : '#fff') }}>
+              <IoLogoLinkedin />
+            </span>
+          </OuterLink>
         </ListItem>
 
         <ListItem fontSize={rhythm(0.8)} float="right">
