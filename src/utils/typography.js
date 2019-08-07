@@ -1,8 +1,7 @@
 import Typography from 'typography';
 import fairyGatesTheme from 'typography-theme-fairy-gates';
 
-fairyGatesTheme.bodyFontFamily = ['SourceSansPro', 'sans-serif'];
-fairyGatesTheme.baseFontSize = '19px';
+fairyGatesTheme.baseFontSize = '20px';
 
 const typography = new Typography(fairyGatesTheme);
 

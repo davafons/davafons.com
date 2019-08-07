@@ -27,7 +27,7 @@ const theme = {
     }
   },
   sizes: {
-    contentWidth: rhythm(29)
+    contentWidth: rhythm(28)
   },
   styles: {
     h1: {
@@ -81,7 +81,9 @@ const theme = {
       boxShadow: '2px 4px 25px rgba(0,0,0,.15) !important'
     },
     code: {
-      padding: `${rhythm(0.2)} ${rhythm(0.12)} ${rhythm(0.12)} ${rhythm(0.15)} !important`,
+      padding: `${rhythm(0.1)} ${rhythm(0.12)} ${rhythm(0.1)} ${rhythm(
+        0.12
+      )} !important`,
       color: '#eee !important'
     },
     hr: {
