@@ -8,7 +8,8 @@ const theme = {
     background2: '#f3f3f2',
     primary: '#008aff',
     secondary: '#1d50c9',
-    muted: '#d4edf7',
+    highlight: '#d4edf7',
+    muted: 'rgb(228, 228, 228)',
     codeBackground: '#2d2d2d',
     modes: {
       dark: {
@@ -17,7 +18,8 @@ const theme = {
         background2: '#202020',
         primary: '#008aff',
         secondary: '#1d50c9',
-        muted: '#f2f2f2',
+        highlight: '#f2f2f2ee',
+        muted: '#5c5c5c55',
         codeBackground: '#202020'
       }
     }
@@ -62,7 +64,7 @@ const theme = {
       textShadow: 'none',
       '&:hover': {
         color: 'secondary',
-        backgroundColor: 'muted',
+        backgroundColor: 'highlight',
         textDecoration: 'underline'
       }
     },
@@ -78,15 +80,15 @@ const theme = {
       boxShadow: '2px 4px 25px rgba(0,0,0,.15) !important'
     },
     code: {
-      padding: `${rhythm(0.1)} ${rhythm(0.12)} ${rhythm(0.1)} ${rhythm(
-        0.12
+      padding: `${rhythm(0.1)} ${rhythm(0.15)} ${rhythm(0.1)} ${rhythm(
+        0.15
       )} !important`,
       color: '#eee !important'
     },
     hr: {
       marginTop: rhythm(0.5),
       background: 'none',
-      backgroundColor: 'text',
+      backgroundColor: 'muted',
       borderColor: 'text'
     }
   }

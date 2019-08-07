@@ -17,8 +17,8 @@ export default ({ data }) => {
       <Styled.h1>Hi! Im building a fake Gatsby site as part of a tutorial!</Styled.h1>
       {posts.map(({ node }) => {
         return (
-          <div key={node.id}>
-            <Link sx={{}} to={node.fields.slug}>
+          <div sx={{ lineHeight: rhythm(1.1) }} key={node.id}>
+            <Link to={node.fields.slug}>
               <Styled.h3
                 sx={{
                   marginBottom: rhythm(1 / 4)
@@ -27,7 +27,7 @@ export default ({ data }) => {
                 {node.frontmatter.title}{' '}
                 <span
                   sx={{
-                    fontSize: rhythm(0.6),
+                    fontSize: rhythm(0.55),
                     float: 'right',
                     color: 'primary'
                   }}
@@ -35,8 +35,19 @@ export default ({ data }) => {
                   {node.frontmatter.date}
                 </span>
               </Styled.h3>
-              <Styled.p>{node.excerpt}</Styled.p>
+              <Styled.p sx={{ marginBottom: 1 }}>{node.excerpt}</Styled.p>
+              <Styled.p sx={{ margin: 0 }}>
+                <span
+                  sx={{
+                    fontSize: rhythm(0.6),
+                    color: 'gray'
+                  }}
+                >
+                  {node.fields.readingTime.text}
+                </span>
+              </Styled.p>
             </Link>
+            <Styled.hr />
           </div>
         );
       })}
@@ -56,6 +67,9 @@ export const query = graphql`
           }
           fields {
             slug
+            readingTime {
+              text
+            }
           }
           excerpt
         }
