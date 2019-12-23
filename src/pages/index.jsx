@@ -13,7 +13,7 @@ export default ({ data }) => {
 
   return (
     <Layout>
-      <SEO title="All posts" />
+      <SEO title="David Afonso blog"/>
 
       <Styled.hr/>
 
