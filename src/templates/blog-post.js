@@ -50,7 +50,7 @@ export default ({ data }) => {
     }
   }).Compiler;
 
-  const disqusConfig = {
+  let disqusConfig = {
     url: `${data.site.siteMetadata.siteUrl + location.pathname}`,
     identifier: post.id,
     title: post.title

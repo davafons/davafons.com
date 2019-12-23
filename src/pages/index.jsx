@@ -15,6 +15,8 @@ export default ({ data }) => {
     <Layout>
       <SEO title="David Afonso blog"/>
 
+      <Styled.h1>Last blog entries</Styled.h1>
+
       {posts.map(({ node }) => {
         return (
           <div key={node.id}>
