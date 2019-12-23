@@ -1,34 +1,35 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui';
 
-import { Link, graphql } from 'gatsby';
-import { rhythm } from '../utils/typography';
+import PropTypes from 'prop-types';
+
 import Layout from '../components/layout';
+import { rhythm } from '../utils/typography';
 import { Styled } from 'theme-ui';
 
-import SEO from '../components/seo.jsx';
+// Components
+import { Link, graphql } from 'gatsby';
 
-export default ({ data }) => {
-  const posts = data.allMarkdownRemark.edges;
+const Tags = ({ pageContext, data }) => {
+  const { tag } = pageContext;
+  const { edges, totalCount } = data.allMarkdownRemark;
+  const tagHeader = `${totalCount} post${
+    totalCount === 1 ? '' : 's'
+  } tagged with "${tag}"`;
 
   return (
     <Layout>
-      <SEO title="David Afonso blog"/>
-
-      <Styled.h1>Latest blog entries</Styled.h1>
-
-      {posts.map(({ node }) => {
+      <Styled.h1>{tagHeader}</Styled.h1>
+      {edges.map(({ node }) => {
         return (
           <div key={node.id}>
             <Link to={node.fields.slug}>
-
               <Styled.h3
                 sx={{
                   marginBottom: rhythm(1 / 4)
                 }}
               >
                 {node.frontmatter.title}{' '}
-
                 <span
                   sx={{
                     fontSize: rhythm(0.55),
@@ -55,13 +56,45 @@ export default ({ data }) => {
           </div>
         );
       })}
+
+      <Link to="/tags">All tags</Link>
     </Layout>
   );
 };
 
-export const query = graphql`
-  query {
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+Tags.propTypes = {
+  pageContext: PropTypes.shape({
+    tag: PropTypes.string.isRequired
+  }),
+  data: PropTypes.shape({
+    allMarkdownRemark: PropTypes.shape({
+      totalCount: PropTypes.number.isRequired,
+      edges: PropTypes.arrayOf(
+        PropTypes.shape({
+          node: PropTypes.shape({
+            frontmatter: PropTypes.shape({
+              title: PropTypes.string.isRequired
+            }),
+            fields: PropTypes.shape({
+              slug: PropTypes.string.isRequired
+            })
+          })
+        }).isRequired
+      )
+    })
+  })
+};
+
+export default Tags;
+
+export const pageQuery = graphql`
+  query($tag: String) {
+    allMarkdownRemark(
+      limit: 2000
+      sort: { fields: [frontmatter___date], order: DESC }
+      filter: { frontmatter: { tags: { in: [$tag] } } }
+    ) {
+      totalCount
       edges {
         node {
           id
