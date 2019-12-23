@@ -15,10 +15,6 @@ import { Styled } from 'theme-ui';
 const Code = props => {
   return (
     <Styled.code
-      {...props}
-      sx={{
-        backgroundColor: theme => `${theme.colors.codeBackground} !important`
-      }}
     >
       {props.children}
     </Styled.code>
@@ -28,10 +24,6 @@ const Code = props => {
 const Pre = props => {
   return (
     <Styled.pre
-      {...props}
-      sx={{
-        backgroundColor: theme => `${theme.colors.codeBackground} !important`
-      }}
     >
       {props.children}
     </Styled.pre>
@@ -75,6 +67,7 @@ export default ({ data }) => {
       />
       <div>
         <Styled.h1>{post.frontmatter.title}</Styled.h1>
+        <br/>
         {renderAst(post.htmlAst)}
       </div>
     </Layout>
