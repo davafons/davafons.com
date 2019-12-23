@@ -4,6 +4,7 @@ import { jsx } from 'theme-ui';
 import React from 'react';
 import Layout from '../components/layout';
 import { graphql } from 'gatsby';
+import { Disqus, CommentCount } from 'gatsby-plugin-disqus';
 
 import { OutboundLink } from 'gatsby-plugin-google-analytics';
 import rehypeReact from 'rehype-react';
@@ -13,21 +14,11 @@ import SEO from '../components/seo.jsx';
 import { Styled } from 'theme-ui';
 
 const Code = props => {
-  return (
-    <Styled.code
-    >
-      {props.children}
-    </Styled.code>
-  );
+  return <Styled.code>{props.children}</Styled.code>;
 };
 
 const Pre = props => {
-  return (
-    <Styled.pre
-    >
-      {props.children}
-    </Styled.pre>
-  );
+  return <Styled.pre>{props.children}</Styled.pre>;
 };
 
 const StyledOutLink = props => {
@@ -59,6 +50,12 @@ export default ({ data }) => {
     }
   }).Compiler;
 
+  const disqusConfig = {
+    url: `${data.site.siteMetadata.siteUrl + location.pathname}`,
+    identifier: post.id,
+    title: post.title
+  };
+
   return (
     <Layout>
       <SEO
@@ -67,9 +64,14 @@ export default ({ data }) => {
       />
       <div>
         <Styled.h1>{post.frontmatter.title}</Styled.h1>
-        <br/>
+
+        <CommentCount config={disqusConfig} placeholder={'...'} />
+
         {renderAst(post.htmlAst)}
       </div>
+
+      <Disqus config={disqusConfig} />
+
     </Layout>
   );
 };
@@ -80,6 +82,11 @@ export const query = graphql`
       htmlAst
       frontmatter {
         title
+      }
+    }
+    site {
+      siteMetadata {
+        siteUrl
       }
     }
   }

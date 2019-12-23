@@ -56,6 +56,12 @@ module.exports = {
       }
     },
     {
+      resolve: `gatsby-plugin-disqus`,
+      options: {
+        shortname: `davafons`
+      }
+    },
+    {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
         trackingId: 'UA-145148593-1',
