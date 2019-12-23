@@ -2,7 +2,7 @@
   "name": "davafons.com",
   "description": "Personal website. Made with GatsbyJS/React/Netlify",
   "version": "1.0.0",
-  "license": "MIT,
+  "license": "MIT",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
