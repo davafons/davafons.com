@@ -4,11 +4,13 @@ import { jsx } from 'theme-ui';
 import { rhythm } from '../utils/typography';
 
 import Navbar from '../components/navbar';
+import Footer from '../components/footer';
 
 export default ({ children }) => {
   return (
     <div>
       <Navbar />
+
       <main
         sx={{
           maxWidth: 'contentWidth',
@@ -18,6 +20,8 @@ export default ({ children }) => {
       >
         {children}
       </main>
+
+      <Footer />
     </div>
   );
 };
