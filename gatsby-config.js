@@ -7,7 +7,8 @@ module.exports = {
     social: {
       twitter: 'davafons',
       github: 'davafons',
-      linkedin: 'davafons'
+      linkedin: 'davafons',
+      disqus: 'davafons'
     }
   },
   plugins: [
@@ -53,12 +54,6 @@ module.exports = {
           'gatsby-remark-copy-linked-files',
           'gatsby-remark-reading-time'
         ]
-      }
-    },
-    {
-      resolve: `gatsby-plugin-disqus`,
-      options: {
-        shortname: `davafons`
       }
     },
     {

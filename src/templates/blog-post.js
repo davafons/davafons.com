@@ -4,7 +4,7 @@ import { jsx } from 'theme-ui';
 import React from 'react';
 import Layout from '../components/layout';
 import { graphql } from 'gatsby';
-import { Disqus, CommentCount } from 'gatsby-plugin-disqus';
+import { DiscussionEmbed } from 'disqus-react';
 
 import { OutboundLink } from 'gatsby-plugin-google-analytics';
 import rehypeReact from 'rehype-react';
@@ -50,10 +50,11 @@ export default ({ data }) => {
     }
   }).Compiler;
 
-  let disqusConfig = {
-    url: `${data.site.siteMetadata.siteUrl + location.pathname}`,
-    identifier: post.id,
-    title: post.title
+  const disqusConfig = {
+    shortname: data.site.siteMetadata.social.disqus,
+    config: {
+      identifier: post.slug
+    }
   };
 
   return (
@@ -65,13 +66,10 @@ export default ({ data }) => {
       <div>
         <Styled.h1>{post.frontmatter.title}</Styled.h1>
 
-        <CommentCount config={disqusConfig} placeholder={'...'} />
-
         {renderAst(post.htmlAst)}
+
+        <DiscussionEmbed {...disqusConfig} />
       </div>
-
-      <Disqus config={disqusConfig} />
-
     </Layout>
   );
 };
@@ -86,7 +84,9 @@ export const query = graphql`
     }
     site {
       siteMetadata {
-        siteUrl
+        social {
+          disqus
+        }
       }
     }
   }
