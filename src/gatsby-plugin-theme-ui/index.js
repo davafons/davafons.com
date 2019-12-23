@@ -2,7 +2,7 @@ import { rhythm } from '../utils/typography.js';
 
 const theme = {
   colors: {
-    text: '#303030',
+    text: '#222222',
     background: '#ffffffff',
     background2: '#f5f2f0',
     primary: '#0b7dda',
