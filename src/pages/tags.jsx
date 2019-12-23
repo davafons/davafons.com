@@ -1,12 +1,34 @@
-import React from "react"
+/** @jsx jsx */
+import { jsx } from 'theme-ui';
+
 import PropTypes from "prop-types"
 
 // Utilities
 import kebabCase from "lodash/kebabCase"
 
 // Components
-import { Helmet } from "react-helmet"
+import SEO from '../components/seo.jsx';
+import Layout from '../components/layout';
+
+import { Styled } from 'theme-ui';
 import { Link, graphql } from "gatsby"
+
+import { rhythm } from '../utils/typography.js';
+
+const InnerLink = props => (
+  <Link
+    sx={{
+      backgroundImage: 'inherit',
+      textDecoration: 'none',
+      color: 'primary',
+      textShadow: 'none'
+    }}
+    to={props.to}
+  >
+    {props.children}
+  </Link>
+);
+
 const TagsPage = ({
   data: {
     allMarkdownRemark: { group },
@@ -15,22 +37,23 @@ const TagsPage = ({
     },
   },
 }) => (
-  <div>
-    <Helmet title={title} />
-    <div>
-      <h1>Tags</h1>
-      <ul>
+  <Layout>
+      <SEO title={title}/>
+
+      <Styled.h1>Tags</Styled.h1>
+
+      <ul sx={{listStyleType: "square", marginTop: rhythm(1)}}>
         {group.map(tag => (
-          <li key={tag.fieldValue}>
-            <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
+          <li sx={{fontSize: rhythm(0.8)}} key={tag.fieldValue}>
+            <InnerLink to={`/tags/${kebabCase(tag.fieldValue)}/`}>
               {tag.fieldValue} ({tag.totalCount})
-            </Link>
+            </InnerLink>
           </li>
         ))}
       </ul>
-    </div>
-  </div>
+  </Layout>
 )
+
 TagsPage.propTypes = {
   data: PropTypes.shape({
     allMarkdownRemark: PropTypes.shape({

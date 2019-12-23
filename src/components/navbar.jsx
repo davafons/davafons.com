@@ -129,6 +129,10 @@ const Navbar = () => {
         <ListItem float="right">
           <InnerLink to="/about/">About</InnerLink>
         </ListItem>
+
+        <ListItem float="right">
+          <InnerLink to="/tags/">Tags</InnerLink>
+        </ListItem>
       </ul>
 
       <Styled.hr />

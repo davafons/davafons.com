@@ -2,7 +2,6 @@
 import { jsx } from 'theme-ui';
 
 import React from 'react';
-import Layout from '../components/layout';
 import { graphql } from 'gatsby';
 import { DiscussionEmbed } from 'disqus-react';
 
@@ -10,6 +9,7 @@ import { OutboundLink } from 'gatsby-plugin-google-analytics';
 import rehypeReact from 'rehype-react';
 
 import SEO from '../components/seo.jsx';
+import Layout from '../components/layout';
 
 import { Styled } from 'theme-ui';
 

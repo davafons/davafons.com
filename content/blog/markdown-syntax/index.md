@@ -2,7 +2,7 @@
 layout: post
 title: Example content
 date: "2019-08-05"
-tags: ["test"]
+tags: ["Test"]
 ---
 
 

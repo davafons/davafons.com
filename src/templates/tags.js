@@ -3,12 +3,30 @@ import { jsx } from 'theme-ui';
 
 import PropTypes from 'prop-types';
 
-import Layout from '../components/layout';
+// Utilities
+import kebabCase from "lodash/kebabCase"
 import { rhythm } from '../utils/typography';
 import { Styled } from 'theme-ui';
 
 // Components
 import { Link, graphql } from 'gatsby';
+
+import Layout from '../components/layout';
+
+const InnerLink = props => (
+  <Link
+    sx={{
+      backgroundImage: 'inherit',
+      textDecoration: 'none',
+      color: 'primary',
+      textShadow: 'none'
+    }}
+    to={props.to}
+  >
+    {props.children}
+  </Link>
+);
+
 
 const Tags = ({ pageContext, data }) => {
   const { tag } = pageContext;
@@ -23,23 +41,36 @@ const Tags = ({ pageContext, data }) => {
       {edges.map(({ node }) => {
         return (
           <div key={node.id}>
-            <Link to={node.fields.slug}>
+            <InnerLink to={node.fields.slug}>
+
               <Styled.h3
                 sx={{
                   marginBottom: rhythm(1 / 4)
                 }}
               >
                 {node.frontmatter.title}{' '}
+
                 <span
                   sx={{
-                    fontSize: rhythm(0.55),
+                    fontSize: rhythm(0.5),
                     float: 'right',
-                    color: 'secondary'
+                    color: 'primary'
                   }}
                 >
                   {node.frontmatter.date}
                 </span>
               </Styled.h3>
+
+              {node.frontmatter.tags ?
+              <div>
+                <span sx={{color: 'gray'}}>Tags: </span>
+                <InnerLink key={node.frontmatter.tags[0]}
+                to={`/tags/${kebabCase(node.frontmatter.tags[0])}/`}>{node.frontmatter.tags[0]}</InnerLink>
+                {node.frontmatter.tags.slice(1).map((tag) => {
+                return (<InnerLink key={tag} to={`/tags/${kebabCase(tag)}/`}>, {tag}</InnerLink>)
+              })}</div>
+              : <span></span>}
+
 
               <Styled.p sx={{ marginBottom: 1 }}>{node.excerpt}</Styled.p>
               <Styled.p>
@@ -50,14 +81,18 @@ const Tags = ({ pageContext, data }) => {
                   }}
                 >
                   {node.fields.readingTime.text}
+
+
                 </span>
+
+
               </Styled.p>
-            </Link>
+            </InnerLink>
           </div>
         );
       })}
 
-      <Link to="/tags">All tags</Link>
+      <InnerLink to="/tags">All tags</InnerLink>
     </Layout>
   );
 };
