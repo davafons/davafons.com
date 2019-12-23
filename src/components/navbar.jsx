@@ -2,6 +2,7 @@
 import { jsx } from 'theme-ui';
 
 import { rhythm } from '../utils/typography';
+import { Styled } from 'theme-ui';
 
 import {
   IoLogoGithub,
@@ -105,7 +106,7 @@ const Navbar = () => {
                 alt="Icon"
               />
             </span>
-            <b sx={{ paddingLeft: rhythm(0.2), position: 'relative', top: '-5px' }}>
+            <b sx={{ paddingLeft: rhythm(0.25), position: 'relative', top: '-5px' }}>
               {data.site.siteMetadata.title}
             </b>
           </InnerLink>
@@ -113,7 +114,7 @@ const Navbar = () => {
 
         <ListItem fontSize={rhythm(0.8)} float="right">
           <OuterLink ariaLabel="Github" to={githubURL}>
-            <span sx={{ color: 'text' }}>
+            <span sx={{ color: 'text'}}>
               <IoLogoGithub />
             </span>
           </OuterLink>
@@ -129,7 +130,10 @@ const Navbar = () => {
           <InnerLink to="/about/">About</InnerLink>
         </ListItem>
       </ul>
+
+      <Styled.hr />
     </nav>
+
   );
 };
 
