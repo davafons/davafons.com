@@ -14,29 +14,34 @@ export default ({ data }) => {
   return (
     <Layout>
       <SEO title="All posts" />
-      <Styled.h1>Hi! Im building a fake Gatsby site as part of a tutorial!</Styled.h1>
+
+      <Styled.hr/>
+
       {posts.map(({ node }) => {
         return (
-          <div sx={{ lineHeight: rhythm(1.1) }} key={node.id}>
+          <div key={node.id}>
             <Link to={node.fields.slug}>
+
               <Styled.h3
                 sx={{
                   marginBottom: rhythm(1 / 4)
                 }}
               >
                 {node.frontmatter.title}{' '}
+
                 <span
                   sx={{
                     fontSize: rhythm(0.55),
                     float: 'right',
-                    color: 'primary'
+                    color: 'secondary'
                   }}
                 >
                   {node.frontmatter.date}
                 </span>
               </Styled.h3>
+
               <Styled.p sx={{ marginBottom: 1 }}>{node.excerpt}</Styled.p>
-              <Styled.p sx={{ margin: 0 }}>
+              <Styled.p>
                 <span
                   sx={{
                     fontSize: rhythm(0.6),
@@ -47,7 +52,6 @@ export default ({ data }) => {
                 </span>
               </Styled.p>
             </Link>
-            <Styled.hr />
           </div>
         );
       })}

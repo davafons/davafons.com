@@ -1,28 +1,13 @@
 import { rhythm } from '../utils/typography.js';
 
 const theme = {
-  initialColorMode: 'light',
   colors: {
-    text: '#404040',
-    background: '#fafaf9',
-    background2: '#f3f3f2',
+    text: '#303030',
+    background: '#ffffffff',
     primary: '#008aff',
     secondary: '#1d50c9',
     highlight: '#d4edf7',
     muted: 'rgb(228, 228, 228)',
-    codeBackground: '#2d2d2d',
-    modes: {
-      dark: {
-        text: '#c5cad3',
-        background: '#2d2d2d',
-        background2: '#202020',
-        primary: '#008aff',
-        secondary: '#1d50c9',
-        highlight: '#f2f2f2ee',
-        muted: '#5c5c5c55',
-        codeBackground: '#202020'
-      }
-    }
   },
   sizes: {
     contentWidth: rhythm(28)
@@ -74,16 +59,6 @@ const theme = {
       borderLeftStyle: 'solid',
       borderLeftWidth: rhythm(0.4),
       marginLeft: 0
-    },
-    pre: {
-      margin: `${rhythm(1)} 0 !important`,
-      boxShadow: '2px 4px 25px rgba(0,0,0,.15) !important'
-    },
-    code: {
-      padding: `${rhythm(0.1)} ${rhythm(0.15)} ${rhythm(0.1)} ${rhythm(
-        0.15
-      )} !important`,
-      color: '#eee !important'
     },
     hr: {
       marginTop: rhythm(0.5),

@@ -4,11 +4,8 @@ import { jsx } from 'theme-ui';
 import { rhythm } from '../utils/typography';
 
 import {
-  IoMdSunny,
-  IoMdMoon,
   IoLogoGithub,
   IoLogoTwitter,
-  IoLogoLinkedin
 } from 'react-icons/io';
 
 import icon from '../../content/assets/icon.png';
@@ -16,7 +13,6 @@ import icon from '../../content/assets/icon.png';
 import { Link } from 'gatsby';
 import { OutboundLink } from 'gatsby-plugin-google-analytics';
 
-import { useColorMode } from 'theme-ui';
 import { useStaticQuery, graphql } from 'gatsby';
 
 const InnerLink = props => (
@@ -66,8 +62,6 @@ const ListItem = props => {
 };
 
 const Navbar = () => {
-  const [colorMode, setColorMode] = useColorMode();
-
   const data = useStaticQuery(
     graphql`
       query {
@@ -86,16 +80,11 @@ const Navbar = () => {
 
   const githubURL = `https://github.com/${data.site.siteMetadata.social.github}`;
   const twitterURL = `https://twitter.com/${data.site.siteMetadata.social.twitter}`;
-  const linkedinURL = `https://linkedin.com/in/${data.site.siteMetadata.social.linkedin}`;
 
   return (
     <nav
       sx={{
-        paddingTop: rhythm(0.5),
-        paddingBottom: rhythm(0.2),
-        margin: '0 auto',
-        backgroundColor: 'background2',
-        boxShadow: '0 1px 3px -2px rgba(0,0,0,.2)'
+        paddingTop: rhythm(0.8),
       }}
     >
       <ul
@@ -107,7 +96,7 @@ const Navbar = () => {
           overflow: 'hidden'
         }}
       >
-        <ListItem fontSize={rhythm(0.75)} float="left" to="/">
+        <ListItem fontSize={rhythm(0.9)} float="left" to="/">
           <InnerLink to="/">
             <span>
               <img
@@ -123,36 +112,8 @@ const Navbar = () => {
         </ListItem>
 
         <ListItem fontSize={rhythm(0.8)} float="right">
-          <button
-            name="change_theme"
-            aria-label="Change page theme"
-            sx={{
-              cursor: 'pointer',
-              color: '#f9bc06',
-              backgroundColor: 'inherit',
-              border: 'none',
-              marginLeft: rhythm(0.5),
-              padding: 0
-            }}
-            onClick={() => {
-              setColorMode(colorMode === 'light' ? 'dark' : 'light');
-            }}
-          >
-            {colorMode === 'light' ? <IoMdSunny /> : <IoMdMoon />}
-          </button>
-        </ListItem>
-
-        <ListItem fontSize={rhythm(0.85)} float="right">
-          <OuterLink ariaLabel="Linkedin" to={linkedinURL}>
-            <span sx={{ color: () => (colorMode === 'light' ? '#000' : '#fff') }}>
-              <IoLogoLinkedin />
-            </span>
-          </OuterLink>
-        </ListItem>
-
-        <ListItem fontSize={rhythm(0.8)} float="right">
           <OuterLink ariaLabel="Github" to={githubURL}>
-            <span sx={{ color: () => (colorMode === 'light' ? '#000' : '#fff') }}>
+            <span sx={{ color: 'text' }}>
               <IoLogoGithub />
             </span>
           </OuterLink>
@@ -160,7 +121,7 @@ const Navbar = () => {
 
         <ListItem fontSize={rhythm(0.8)} float="right">
           <OuterLink ariaLabel="Twitter" to={twitterURL}>
-            <IoLogoTwitter sx={{ color: '#00acee' }} />
+            <IoLogoTwitter sx={{ color: 'text' }} />
           </OuterLink>
         </ListItem>
 
