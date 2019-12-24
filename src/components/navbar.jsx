@@ -90,7 +90,15 @@ const Navbar = () => {
                 alt="Icon"
               />
             </span>
-            <b sx={{ paddingLeft: rhythm(0.25), color: 'text', position: 'relative', top: '-5px' }}>
+            <b sx={{
+              paddingLeft: rhythm(0.25),
+              color: 'text',
+              position: 'relative',
+              top: '-5px',
+              ["@media (max-width: 403px)"]: {
+                display: "none"
+              }
+            }}>
               {data.site.siteMetadata.title}
             </b>
           </InnerLink>

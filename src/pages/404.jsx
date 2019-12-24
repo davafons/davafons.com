@@ -23,6 +23,7 @@ export default () => (
       <img src={image404}
             sx={{
               color: 'primary',
+              marginTop: 30,
         display: 'inline-block' }}
       >
       </img>
