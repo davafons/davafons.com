@@ -4,6 +4,7 @@ module.exports = {
     author: 'David Afonso',
     description: 'Coder. Computer Graphics & Vim enthusiast',
     siteUrl: 'https://davafons.com',
+    githubRepository: 'https://github.com/davafons/davafons.com',
     social: {
       twitter: 'davafons',
       github: 'davafons',

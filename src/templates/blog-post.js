@@ -6,13 +6,13 @@ import rehypeReact from 'rehype-react';
 
 import { graphql } from 'gatsby';
 import { DiscussionEmbed } from 'disqus-react';
-import { OutboundLink } from 'gatsby-plugin-google-analytics';
 import { Styled } from 'theme-ui';
 
 // Components
 import SEO from '../components/seo.jsx';
 import Layout from '../components/layout';
 import TagsList from '../components/tags-list';
+import OuterLink from '../components/outer-link';
 
 const BlogPost = ({ data }) => {
   // Custom components for the Ast tree
@@ -22,14 +22,6 @@ const BlogPost = ({ data }) => {
 
   const Pre = props => {
     return <Styled.pre>{props.children}</Styled.pre>;
-  };
-
-  const StyledOutLink = props => {
-    return (
-      <Styled.a {...props} as={OutboundLink}>
-        {props.children}
-      </Styled.a>
-    );
   };
 
   const renderAst = new rehypeReact({
@@ -42,7 +34,7 @@ const BlogPost = ({ data }) => {
       h4: Styled.h4,
       h5: Styled.h5,
       h6: Styled.h6,
-      a: StyledOutLink,
+      a: OuterLink,
       blockquote: Styled.blockquote,
       code: Code,
       pre: Pre,

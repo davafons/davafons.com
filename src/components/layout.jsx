@@ -9,20 +9,27 @@ import Footer from '../components/footer';
 
 export default ({ children }) => {
   return (
-    <div>
+    <body sx={{
+      maxWidth: 'contentWidth',
+      margin: '0 auto',
+      display: 'flex',
+      minHeight: '100vh',
+      flexDirection: 'column',
+      padding: `0 ${rhythm(0.75)}`
+    }}>
       <Navbar />
 
       <main
         sx={{
-          maxWidth: 'contentWidth',
-          margin: '0 auto',
-          padding: `0 ${rhythm(0.75)}`
+          flex: 1,
+          marginTop: 0,
         }}
       >
         {children}
       </main>
 
       <Footer />
-    </div>
+
+    </body>
   );
 };

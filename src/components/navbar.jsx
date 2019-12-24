@@ -36,7 +36,7 @@ const ListItem = props => {
       sx={{
         float: props.float,
         display: 'inline-block',
-        padding: `0 ${rhythm(0.5)}`,
+        padding: props.padding,
         margin: 0,
         fontSize: props.fontSize
       }}
@@ -77,7 +77,6 @@ const Navbar = () => {
         sx={{
           maxWidth: 'contentWidth',
           listStyle: 'none',
-          padding: `0 ${rhythm(0.2)}`,
           margin: '0 auto',
           overflow: 'hidden'
         }}
@@ -97,7 +96,7 @@ const Navbar = () => {
           </InnerLink>
         </ListItem>
 
-        <ListItem fontSize={rhythm(0.8)} float="right">
+        <ListItem fontSize={rhythm(0.9)} padding={`0 0 0 ${rhythm(0.5)}`}  float="right">
           <OuterLink ariaLabel="Github" to={githubURL}>
             <span sx={{ color: 'text'}}>
               <IoLogoGithub />
@@ -105,22 +104,22 @@ const Navbar = () => {
           </OuterLink>
         </ListItem>
 
-        <ListItem fontSize={rhythm(0.8)} float="right">
+        <ListItem fontSize={rhythm(0.9)} padding={`0 ${rhythm(0.5)}`} float="right">
           <OuterLink ariaLabel="Twitter" to={twitterURL}>
             <IoLogoTwitter sx={{ color: 'text' }} />
           </OuterLink>
         </ListItem>
 
-        <ListItem float="right">
+        <ListItem  padding={`0 ${rhythm(0.5)}`}float="right">
           <InnerLink to="/about/"><span sx={{ color: 'text' }}>About</span></InnerLink>
         </ListItem>
 
-        <ListItem float="right">
+        <ListItem  padding={`0 ${rhythm(0.5)}`}float="right">
           <InnerLink to="/tags/"><span sx={{ color: 'text' }}>Tags</span></InnerLink>
         </ListItem>
       </ul>
 
-      <Styled.hr />
+      <Styled.hr sx={{ marginBottom: 0 }}/>
     </nav>
 
   );
