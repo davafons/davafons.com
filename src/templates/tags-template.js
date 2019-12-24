@@ -5,23 +5,29 @@ import { graphql } from 'gatsby';
 import { Styled } from 'theme-ui';
 
 // Components
-import Layout from '../components/layout';
 import SEO from '../components/seo.jsx';
+import InnerLink from '../components/innerlink';
+import Layout from '../components/layout';
 import BlogEntry from '../components/blog-entry';
 
+const TagsTemplate = ({ pageContext, data }) => {
+  const { tag } = pageContext;
 
-export default ({ data }) => {
-  const posts = data.allMarkdownRemark.edges;
+  const { edges, totalCount } = data.allMarkdownRemark;
+
+  const tagHeader = `${totalCount} post${
+    totalCount === 1 ? '' : 's'
+  } tagged with "${tag}"`;
 
   return (
     <Layout>
-      <SEO title="David Afonso blog"/>
+      <SEO title={tagHeader} />
 
       <header>
-        <Styled.h1>Latest blog entries</Styled.h1>
+        <Styled.h1>{tagHeader}</Styled.h1>
       </header>
 
-      {posts.map(({ node }) => {
+      {edges.map(({ node }) => {
         return (
           <BlogEntry
             key={node.id}
@@ -31,16 +37,23 @@ export default ({ data }) => {
             tags={node.frontmatter.tags}
             date={node.frontmatter.date}
             excerpt={node.excerpt}
-          ></BlogEntry>)
+          ></BlogEntry>
+        );
       })}
 
+      <InnerLink to="/tags">All tags</InnerLink>
     </Layout>
   );
 };
 
-export const query = graphql`
-  query {
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+export const pageQuery = graphql`
+  query($tag: String) {
+    allMarkdownRemark(
+      limit: 2000
+      sort: { fields: [frontmatter___date], order: DESC }
+      filter: { frontmatter: { tags: { in: [$tag] } } }
+    ) {
+      totalCount
       edges {
         node {
           id
@@ -61,3 +74,5 @@ export const query = graphql`
     }
   }
 `;
+
+export default TagsTemplate;

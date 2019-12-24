@@ -3,6 +3,7 @@ import { jsx } from 'theme-ui';
 
 import { rhythm } from '../utils/typography';
 
+// Components
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
 

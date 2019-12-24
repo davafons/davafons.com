@@ -1,34 +1,19 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui';
 
+import { useStaticQuery, graphql } from 'gatsby';
+
 import { rhythm } from '../utils/typography';
 import { Styled } from 'theme-ui';
 
-import {
-  IoLogoGithub,
-  IoLogoTwitter,
-} from 'react-icons/io';
+// Components
+import { IoLogoGithub, IoLogoTwitter } from 'react-icons/io';
+import { OutboundLink } from 'gatsby-plugin-google-analytics';
+import InnerLink from '../components/innerlink';
 
+// Assets
 import icon from '../../content/assets/icon.png';
 
-import { Link } from 'gatsby';
-import { OutboundLink } from 'gatsby-plugin-google-analytics';
-
-import { useStaticQuery, graphql } from 'gatsby';
-
-const InnerLink = props => (
-  <Link
-    sx={{
-      backgroundImage: 'inherit',
-      textDecoration: 'none',
-      color: 'inherit',
-      textShadow: 'none'
-    }}
-    to={props.to}
-  >
-    {props.children}
-  </Link>
-);
 
 const OuterLink = props => (
   <OutboundLink
@@ -106,7 +91,7 @@ const Navbar = () => {
                 alt="Icon"
               />
             </span>
-            <b sx={{ paddingLeft: rhythm(0.25), position: 'relative', top: '-5px' }}>
+            <b sx={{ paddingLeft: rhythm(0.25), color: 'text', position: 'relative', top: '-5px' }}>
               {data.site.siteMetadata.title}
             </b>
           </InnerLink>
@@ -127,11 +112,11 @@ const Navbar = () => {
         </ListItem>
 
         <ListItem float="right">
-          <InnerLink to="/about/">About</InnerLink>
+          <InnerLink to="/about/"><span sx={{ color: 'text' }}>About</span></InnerLink>
         </ListItem>
 
         <ListItem float="right">
-          <InnerLink to="/tags/">Tags</InnerLink>
+          <InnerLink to="/tags/"><span sx={{ color: 'text' }}>Tags</span></InnerLink>
         </ListItem>
       </ul>
 

@@ -14,34 +14,8 @@ const theme = {
     contentWidth: rhythm(28)
   },
   styles: {
-    h1: {
-      color: 'text',
-      textShadow: 'none'
-    },
-    h2: {
-      color: 'text',
-      textShadow: 'none'
-    },
-    h3: {
-      color: 'text',
-      textShadow: 'none'
-    },
-    h4: {
-      color: 'text',
-      textShadow: 'none'
-    },
-    h5: {
-      color: 'text',
-      textShadow: 'none'
-    },
-    h6: {
-      color: 'text',
-      textShadow: 'none'
-    },
     p: {
       color: 'text',
-      textShadow: 'none',
-      verticalAlign: 'middle !important'
     },
     a: {
       color: 'primary',

@@ -1,14 +1,13 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui';
-
 import { Link } from 'gatsby';
 
-const InnerLink = props => {
+const InnerLink = (props) => {
   return (<Link
     sx={{
       backgroundImage: 'inherit',
       textDecoration: 'none',
-      color: 'inherit',
+      color: 'primary',
       textShadow: 'none'
     }}
     to={props.to}

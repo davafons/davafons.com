@@ -1,5 +1,6 @@
 const { createFilePath } = require(`gatsby-source-filesystem`);
-const _ = require('lodash');
+const { kebabCase } = require('lodash');
+
 const path = require('path');
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
@@ -19,7 +20,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions;
 
   const blogPostTemplate = path.resolve('src/templates/blog-post.js');
-  const tagTemplate = path.resolve('src/templates/tags.js');
+  const tagTemplate = path.resolve('src/templates/tags-template.js');
 
   const result = await graphql(`
     {
@@ -68,7 +69,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   tags.forEach(tag => {
     createPage({
-      path: `/tags/${_.kebabCase(tag.fieldValue)}/`,
+      path: `/tags/${kebabCase(tag.fieldValue)}/`,
       component: tagTemplate,
       context: {
         tag: tag.fieldValue

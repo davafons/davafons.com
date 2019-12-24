@@ -2,51 +2,35 @@
 import { jsx } from 'theme-ui';
 
 import React from 'react';
-import { Link, graphql } from 'gatsby';
-import { DiscussionEmbed } from 'disqus-react';
-
-import { OutboundLink } from 'gatsby-plugin-google-analytics';
 import rehypeReact from 'rehype-react';
 
-import kebabCase from 'lodash/kebabCase';
-
-import SEO from '../components/seo.jsx';
-import Layout from '../components/layout';
-
+import { graphql } from 'gatsby';
+import { DiscussionEmbed } from 'disqus-react';
+import { OutboundLink } from 'gatsby-plugin-google-analytics';
 import { Styled } from 'theme-ui';
 
-const InnerLink = props => (
-  <Link
-    sx={{
-      backgroundImage: 'inherit',
-      textDecoration: 'none',
-      color: 'primary',
-      textShadow: 'none'
-    }}
-    to={props.to}
-  >
-    {props.children}
-  </Link>
-);
+// Components
+import SEO from '../components/seo.jsx';
+import Layout from '../components/layout';
+import TagsList from '../components/tags-list';
 
-const Code = props => {
-  return <Styled.code>{props.children}</Styled.code>;
-};
+const BlogPost = ({ data }) => {
+  // Custom components for the Ast tree
+  const Code = props => {
+    return <Styled.code>{props.children}</Styled.code>;
+  };
 
-const Pre = props => {
-  return <Styled.pre>{props.children}</Styled.pre>;
-};
+  const Pre = props => {
+    return <Styled.pre>{props.children}</Styled.pre>;
+  };
 
-const StyledOutLink = props => {
-  return (
-    <Styled.a {...props} as={OutboundLink}>
-      {props.children}
-    </Styled.a>
-  );
-};
-
-export default ({ data }) => {
-  const post = data.markdownRemark;
+  const StyledOutLink = props => {
+    return (
+      <Styled.a {...props} as={OutboundLink}>
+        {props.children}
+      </Styled.a>
+    );
+  };
 
   const renderAst = new rehypeReact({
     createElement: React.createElement,
@@ -66,6 +50,8 @@ export default ({ data }) => {
     }
   }).Compiler;
 
+  const post = data.markdownRemark;
+
   const disqusConfig = {
     shortname: data.site.siteMetadata.social.disqus,
     config: {
@@ -79,36 +65,19 @@ export default ({ data }) => {
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
-      <div>
-        <Styled.h1>{post.frontmatter.title}</Styled.h1>
 
-        {post.frontmatter.tags ? (
-          <div>
-            <span sx={{ color: 'gray' }}>Tags: </span>
-            <InnerLink
-              key={post.frontmatter.tags[0]}
-              to={`/tags/${kebabCase(post.frontmatter.tags[0])}/`}
-            >
-              {post.frontmatter.tags[0]}
-            </InnerLink>
-            {post.frontmatter.tags.slice(1).map(tag => {
-              return (
-                <InnerLink key={tag} to={`/tags/${kebabCase(tag)}/`}>
-                  , {tag}
-                </InnerLink>
-              );
-            })}
-          </div>
-        ) : (
-          <span></span>
-        )}
+      <article>
+        <header>
+          <Styled.h1>{post.frontmatter.title}</Styled.h1>
+        </header>
 
-        <br/>
+        <TagsList tags={post.frontmatter.tags} />
+        <br />
 
         {renderAst(post.htmlAst)}
+      </article>
 
-        <DiscussionEmbed {...disqusConfig} />
-      </div>
+      <DiscussionEmbed {...disqusConfig} />
     </Layout>
   );
 };
@@ -131,3 +100,5 @@ export const query = graphql`
     }
   }
 `;
+
+export default BlogPost;
