@@ -6,7 +6,7 @@ tags: ["Miscellaneous"]
 
 So, I've decided to start a __blog__!.
 
-From time to time, I've liked to have a place where to __sort and review my ideas__, or
+From time to time, I'd have liked to have a place where to __sort and review my ideas__, or
 the new things I learn. Now, I've no excuses to write a blog post every time I learn
 something that is worth sharing :P
 
