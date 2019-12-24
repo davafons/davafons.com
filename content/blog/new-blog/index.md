@@ -22,6 +22,6 @@ In summary, you can expect me to write about:
 * Computer Vision
 * Random thoughs
 
-And much, much more (Thats what I hope)
+And much more (Or at least, that's what I hope)
 
 Thats all for now, see you!
