@@ -2,16 +2,32 @@
 import { jsx } from 'theme-ui';
 
 import React from 'react';
-import { graphql } from 'gatsby';
+import { Link, graphql } from 'gatsby';
 import { DiscussionEmbed } from 'disqus-react';
 
 import { OutboundLink } from 'gatsby-plugin-google-analytics';
 import rehypeReact from 'rehype-react';
 
+import kebabCase from 'lodash/kebabCase';
+
 import SEO from '../components/seo.jsx';
 import Layout from '../components/layout';
 
 import { Styled } from 'theme-ui';
+
+const InnerLink = props => (
+  <Link
+    sx={{
+      backgroundImage: 'inherit',
+      textDecoration: 'none',
+      color: 'primary',
+      textShadow: 'none'
+    }}
+    to={props.to}
+  >
+    {props.children}
+  </Link>
+);
 
 const Code = props => {
   return <Styled.code>{props.children}</Styled.code>;
@@ -66,6 +82,29 @@ export default ({ data }) => {
       <div>
         <Styled.h1>{post.frontmatter.title}</Styled.h1>
 
+        {post.frontmatter.tags ? (
+          <div>
+            <span sx={{ color: 'gray' }}>Tags: </span>
+            <InnerLink
+              key={post.frontmatter.tags[0]}
+              to={`/tags/${kebabCase(post.frontmatter.tags[0])}/`}
+            >
+              {post.frontmatter.tags[0]}
+            </InnerLink>
+            {post.frontmatter.tags.slice(1).map(tag => {
+              return (
+                <InnerLink key={tag} to={`/tags/${kebabCase(tag)}/`}>
+                  , {tag}
+                </InnerLink>
+              );
+            })}
+          </div>
+        ) : (
+          <span></span>
+        )}
+
+        <br/>
+
         {renderAst(post.htmlAst)}
 
         <DiscussionEmbed {...disqusConfig} />
@@ -80,6 +119,7 @@ export const query = graphql`
       htmlAst
       frontmatter {
         title
+        tags
       }
     }
     site {
